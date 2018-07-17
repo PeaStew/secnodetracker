@@ -238,6 +238,9 @@ class SNode {
     if (!self.chalRunning) {
       console.log(logtime(), 'Clearing timer');
       clearInterval(self.opTimer);
+      //PeaStew allows restart of zend on successful challenge to clear memory.
+      console.log(logtime(), `Stopping zend after successful challenge: ${chal.crid}`);
+      self.rpc.stop();
       return;
     }
     if (self.queueCount > 0) return;
